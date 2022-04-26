@@ -1,10 +1,16 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { WelcomeComponent } from './shared/welcome/welcome.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  
+  {
+    path: '',
+    component: WelcomeComponent,
+  },
+  {
+    path: 'events',
+    loadChildren: () => import('./parts/events/events.module').then(mod => mod.EventsModule)
+  },
+];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+export const AppRoutingModule = RouterModule.forRoot(routes);

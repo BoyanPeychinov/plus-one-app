@@ -1,0 +1,23 @@
+.events-general {
+    padding: 3rem 6rem;
+    text-align: center;
+    letter-spacing: 2px;
+
+
+    position: relative;
+    z-index: 2;
+}
+
+.events-general .events-general__title {
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+}
+
+.events-general .events-container {
+    /* width: 80%; */
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: no-wrap;
+
+}

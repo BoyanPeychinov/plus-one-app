@@ -1,0 +1,25 @@
+.event-form__container {
+    padding: 3rem 6rem;
+    text-align: center;
+    letter-spacing: 2px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+.form__buttons .btn-negative {
+    margin-right: 1rem;
+}
+
+
+.form .field-error {
+    border: 2px solid #8b0000;
+    border-left: 4px solid #8b0000;
+    background-color: #ffb3b3;
+}
+
+p.error-msg {
+    color: #8b0000;
+    font-size: 0.7rem;
+}

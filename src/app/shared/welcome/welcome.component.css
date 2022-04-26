@@ -1,0 +1,26 @@
+.welcome {
+    max-width: 50%;
+    height: 50%;
+    text-align: center;
+    line-height: 1.5;
+    position: relative;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.welcome .welcome__title {
+    margin-bottom: 2rem;
+    font-size: 4rem;
+    text-transform: uppercase;
+}
+
+.welcome .welcome__desc {
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.welcome .btn a {
+    text-decoration: none;
+}

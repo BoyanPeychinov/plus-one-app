@@ -1,0 +1,93 @@
+<section class="event-form__container">
+
+    <form class="form" [formGroup]="createFormGroup" (ngSubmit)="handleCreate()">
+        <h1 class="form__title">Създай събитие</h1>
+
+        <div class="form__max-people">
+            <label for="maxPeople">Брой футболисти</label>
+            <input type="number" formControlName="maxPeople" name="maxPeople" id="max-people" class="field"
+                placeholder="18"
+                [class.field-error]="createFormGroup.controls['maxPeople'].touched && createFormGroup.controls['maxPeople'].invalid">
+        </div>
+
+        <ng-container
+            *ngIf="createFormGroup.controls['maxPeople'].touched && createFormGroup.controls['maxPeople'].invalid">
+            <p *ngIf="createFormGroup.controls['maxPeople'].errors?.['required']" class="error-msg">
+                Въведи брой футболист!
+            </p>
+
+        </ng-container>
+
+        <div class="form__start">
+            <label for="start">Начало</label>
+            <input type="text" formControlName="start" name="start" id="start" class="field" placeholder="17:00"
+                [class.field-error]="createFormGroup.controls['start'].touched && createFormGroup.controls['start'].invalid">
+        </div>
+
+        <ng-container *ngIf="createFormGroup.controls['start'].touched && createFormGroup.controls['start'].invalid">
+            <p *ngIf="createFormGroup.controls['start'].errors?.['required']" class="error-msg">
+                Въведи начален час!
+            </p>
+
+        </ng-container>
+
+        <div class="form__end">
+            <label for="end">Край</label>
+            <input type="text" formControlName="end" name="end" id="end" class="field" placeholder="18:00"
+                [class.field-error]="createFormGroup.controls['end'].touched && createFormGroup.controls['end'].invalid">
+        </div>
+
+        <ng-container *ngIf="createFormGroup.controls['end'].touched && createFormGroup.controls['end'].invalid">
+            <p *ngIf="createFormGroup.controls['end'].errors?.['required']" class="error-msg">
+                Въведи краен час!
+            </p>
+
+        </ng-container>
+
+        <div class="form__venue">
+            <label for="venue">Място на игра</label>
+            <input type="text" formControlName="venue" name="venue" id="venue" class="field"
+                placeholder="Футболно игрище"
+                [class.field-error]="createFormGroup.controls['venue'].touched && createFormGroup.controls['venue'].invalid">
+        </div>
+
+        <ng-container *ngIf="createFormGroup.controls['venue'].touched && createFormGroup.controls['venue'].invalid">
+            <p *ngIf="createFormGroup.controls['venue'].errors?.['required']" class="error-msg">
+                Посочи на кое игрище ще се играе срещата!
+            </p>
+
+        </ng-container>
+
+        <div class="form__day">
+            <label for="day">Дата</label>
+            <input type="date" formControlName="day" name="day" id="day" class="field"
+                [class.field-error]="createFormGroup.controls['day'].touched && createFormGroup.controls['day'].invalid">
+        </div>
+
+        <ng-container *ngIf="createFormGroup.controls['day'].touched && createFormGroup.controls['day'].invalid">
+            <p *ngIf="createFormGroup.controls['day'].errors?.['required']" class="error-msg">
+                Посочи дата на срещата!
+            </p>
+
+        </ng-container>
+        
+        <div class="form__rules">
+            <label for="rules">Изисквания, правила и допълнителна информация</label>
+            <textarea name="rules" formControlName="rules" id="rules" class="field"
+                placeholder="Описание на събитието..."
+                [class.field-error]="createFormGroup.controls['rules'].touched && createFormGroup.controls['rules'].invalid"></textarea>
+        </div>
+
+        <ng-container *ngIf="createFormGroup.controls['rules'].touched && createFormGroup.controls['rules'].invalid">
+            <p *ngIf="createFormGroup.controls['rules'].errors?.['required']" class="error-msg">
+                Въведи описание на събитието!
+            </p>
+
+        </ng-container>
+
+        <div class="form__buttons">
+            <button type="button" class="btn-negative btn" (click)="handleGoBack()">Отказ</button>
+            <button [disabled]="!createFormGroup.valid" type="submit" class="btn-success btn">Създай</button>
+        </div>
+    </form>
+</section>

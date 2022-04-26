@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<section class="events-general" *ngIf="events">
+    <h1 class="events-general__title">Събития</h1>
+    <div class="events-container">
+        <app-event-layout *ngFor="let event of events" [event]="event"></app-event-layout>
+    </div>
+</section>
+
+<section class="events-general" *ngIf="!events">
+    Loading...
+</section>

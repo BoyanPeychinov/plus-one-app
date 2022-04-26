@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  classesApiUrl: 'https://parseapi.back4app.com/classes',
+  usersApiUrl: 'https://parseapi.back4app.com/users'
 };
 
 /*

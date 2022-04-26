@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("./assets/reset.css");
+@import url("./assets/typography.css");
+@import url("./assets/components.css");
+
+.bg-image {
+    height: 100vh;
+    width: 100%;
+
+    background-image: url("./assets/background.jpg");
+    background-repeat: none;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    overflow: scroll;
+    
+    
+
+    position: relative;
+}
+
+.bg-image .overlay {
+    position: absolute;
+    background-color: black;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 1;
+}
