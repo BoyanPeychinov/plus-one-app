@@ -1,0 +1,46 @@
+<section class="register-form__container">
+
+    <form class="form" [formGroup]="registerFormGroup" (ngSubmit)="handleRegister()">
+        <h1 class="form__title">Регистриране</h1>
+
+        <div class="form__username">
+            <label for="username">Потребителско име</label>
+            <input type="text" formControlName="username" name="username" class="field"
+                [class.field-error]="registerFormGroup.controls['username'].touched && registerFormGroup.controls['username'].invalid">
+        </div>
+
+        <ng-container
+            *ngIf="registerFormGroup.controls['username'].touched && registerFormGroup.controls['username'].invalid">
+            <p *ngIf="registerFormGroup.controls['username'].errors?.['required']" class="error-msg">
+                Въведи потребителско име!
+            </p>
+            <p *ngIf="registerFormGroup.controls['username'].errors?.['minlength'] || registerFormGroup.controls['username'].errors?.['maxlength']" class="error-msg">
+                Минимално 3 символа, максимално 20!
+            </p>
+
+        </ng-container>
+
+        <div class="form__password">
+            <label for="password">Парола</label>
+            <input type="password" formControlName="password" name="password" class="field"
+                [class.field-error]="registerFormGroup.controls['password'].touched && registerFormGroup.controls['password'].invalid">
+        </div>
+
+        <ng-container
+            *ngIf="registerFormGroup.controls['password'].touched && registerFormGroup.controls['password'].invalid">
+            <p *ngIf="registerFormGroup.controls['password'].errors?.['required']" class="error-msg">
+                Въведи парола!
+            </p>
+            <p *ngIf="registerFormGroup.controls['password'].errors?.['minlength'] || registerFormGroup.controls['password'].errors?.['maxlength']" class="error-msg">
+                Минимално 3 символа, максимално 20!
+            </p>
+
+        </ng-container>
+
+
+        <div class="form__buttons">
+            <button type="button" class="btn-negative btn" (click)="handleGoBack()">Отказ</button>
+            <button [disabled]="!registerFormGroup.valid" type="submit" class="btn-success btn">Регистриране</button>
+        </div>
+    </form>
+</section>

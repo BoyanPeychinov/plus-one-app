@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'events',
     loadChildren: () => import('./parts/events/events.module').then(mod => mod.EventsModule)
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(mod => mod.AuthModule)
+  },
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes);

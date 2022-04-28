@@ -5,6 +5,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ClassesInterceptor } from './interceptors/classes.interceptor';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
+import { HeadersInterceptor } from './interceptors/headers.interceptor';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 
@@ -26,6 +28,16 @@ export class CoreModule {
       ngModule: CoreModule,
       providers: [
         EventsService,
+        {
+          provide: HTTP_INTERCEPTORS,
+          multi: true,
+          useClass: HeadersInterceptor,
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          multi: true,
+          useClass: AuthInterceptor,
+        },
         {
           provide: HTTP_INTERCEPTORS,
           multi: true,

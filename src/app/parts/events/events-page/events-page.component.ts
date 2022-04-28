@@ -15,9 +15,7 @@ export class EventsPageComponent implements OnInit {
   constructor(private eventsService: EventsService) { }
 
   ngOnInit(): void {
-    this.eventsService.getEvents$().pipe(
-      tap(e => console.log(e))
-    )
+    this.eventsService.getEvents$()
     .subscribe(events => {
       this.events = events;
     });

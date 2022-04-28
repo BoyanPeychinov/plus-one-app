@@ -1,0 +1,37 @@
+.header {
+    background: rgb(97, 97, 97);
+    background: linear-gradient(180deg, rgba(97, 97, 97, 0) 0%, rgba(196, 196, 196, 0.053658963585434205) 50%, rgba(97, 97, 97, 1) 100%);
+    
+    position: fixed;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__list {
+    display: flex;
+    justify-content: space-around;
+    gap: 0.3rem;
+}
+
+.nav__itemlink {
+    text-decoration: none;
+    transition: all 0.5s ease-out;
+}
+
+.nav__itemlink:hover,
+.nav__itemlink:focus {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.header__logo {
+    color: white;
+    background-color: white;
+}

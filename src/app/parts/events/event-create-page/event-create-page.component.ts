@@ -31,7 +31,6 @@ export class EventCreatePageComponent implements OnInit {
   }
 
   handleCreate(): void {
-    console.log(this.createFormGroup.value);
     const {maxPeople, start, end, venue, rules, day} = this.createFormGroup.value;
 
     const body: IEventPost = {

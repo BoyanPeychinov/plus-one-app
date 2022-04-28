@@ -20,23 +20,24 @@ export class ClassesInterceptor implements HttpInterceptor {
         if (event instanceof HttpResponse) {
           console.log(event.body.results);
           event = event.clone({ body: this.handleResponse(event) })
-        } 
-        
+        }
+
         return event;
       })
     )
   }
 
   private handleResponse(event: any): any {
-
-    const body = event.body.results
-    const newBody = [];
-    for (let obj of body) {
-      const date = obj.day.iso;
-      obj = {...obj, day: date}
-      newBody.push(obj);
+    if (event.body.results) {
+      const body = event.body.results
+      const newBody = [];
+      for (let obj of body) {
+        const date = obj.day.iso;
+        obj = { ...obj, day: date }
+        newBody.push(obj);
+      }
+      return newBody;
     }
-    return newBody;
 
   }
 

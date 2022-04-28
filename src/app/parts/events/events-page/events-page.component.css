@@ -1,10 +1,12 @@
 .events-general {
+    width: 100%;
     padding: 3rem 6rem;
     text-align: center;
     letter-spacing: 2px;
 
 
     position: relative;
+    top: 3rem;
     z-index: 2;
 }
 

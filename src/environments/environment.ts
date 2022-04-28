@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   classesApiUrl: 'https://parseapi.back4app.com/classes',
-  usersApiUrl: 'https://parseapi.back4app.com/users'
+  usersApiUrl: 'https://parseapi.back4app.com/users',
+  loginApiUrl: 'https://parseapi.back4app.com/login',
+  logoutApiUrl: 'https://parseapi.back4app.com/logout'
 };
 
 /*

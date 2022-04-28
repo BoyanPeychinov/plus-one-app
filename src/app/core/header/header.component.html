@@ -6,26 +6,30 @@
     <nav class="header__nav">
         <ul class="nav__list">
             <li class="nav__item">
-                <a class="nav__itemlink" href="#">Събития</a>
+                <a class="nav__itemlink" [routerLink]="['/events']">Събития</a>
             </li>
             <li class="nav__item">
-                <a class="nav__itemlink" href="#">Създай събитие</a>
+                <a class="nav__itemlink" [routerLink]="['/new-event']">Създай събитие</a>
             </li>
             <li class="nav__item">
                 <a class="nav__itemlink" href="#">Групи</a>
             </li>
-            <li class="nav__item">
-                <a class="nav__itemlink" href="#">Профил</a>
-            </li>
-            <li class="nav__item">
-                <a class="nav__itemlink" href="#">Изход</a>
-            </li>
-            <li class="nav__item">
-                <a class="nav__itemlink" href="#">Вход</a>
-            </li>
-            <li class="nav__item">
-                <a class="nav__itemlink" href="#">Регистриране</a>
-            </li>
+            <ng-container *ngIf="(isLoggedIn$ | async)">
+                <li class="nav__item">
+                    <a class="nav__itemlink" href="#">Профил</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__itemlink" href="javascript:void(0);" (click)="handleLogout()">Изход</a>
+                </li>
+            </ng-container>
+            <ng-container *ngIf="!(isLoggedIn$ | async)">
+                <li class="nav__item">
+                    <a class="nav__itemlink" [routerLink]="['/auth/login']">Вход</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__itemlink" [routerLink]="['/auth/register']">Регистриране</a>
+                </li>
+            </ng-container>
         </ul>
     </nav>
 </header>
