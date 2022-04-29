@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundPageComponent } from './shared/not-found-page/not-found-page.component';
 import { WelcomeComponent } from './shared/welcome/welcome.component';
 
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(mod => mod.AuthModule)
   },
+  {
+    path: '**',
+    component: NotFoundPageComponent
+  }
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes);

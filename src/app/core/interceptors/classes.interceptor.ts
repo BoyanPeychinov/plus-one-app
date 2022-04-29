@@ -18,6 +18,7 @@ export class ClassesInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
+          console.log("Outside", event);
           event = event.clone({ body: this.handleResponse(event) })
         }
 
@@ -27,44 +28,58 @@ export class ClassesInterceptor implements HttpInterceptor {
   }
 
   private handleResponse(event: any): any {
-    if (event.body.results && event.body.results.hasOwnProperty('day')) {
+    if (event.body.results) {
+      console.log("First Inside", event.body.results);
+
       const body = event.body.results;
       const newBody = [];
       for (let obj of body) {
-        const date = obj.day.iso;
-        obj = { ...obj, day: date }
-        newBody.push(obj);
+        if (obj.hasOwnProperty('day')) {
+          const date = obj.day.iso;
+          obj = { ...obj, day: date }
+          newBody.push(obj);
+        } else {
+          obj = { ...obj }
+          newBody.push(obj);
+        }
       }
       return newBody;
 
     } else if (event.body.hasOwnProperty('day')) {
+      console.log("Second Inside", event.body);
+
       const body = event.body;
       const date = body.day.iso;
       const newBody = { ...body, day: date };
 
       return newBody;
-    } else if (event.body.results) {
-      const body = event.body.results;
-      const newBody = [];
-      for (let obj of body) {
-        obj = { ...obj }
-        newBody.push(obj);
-      }
-      return newBody;
+
+    // } else if (event.body.results) {
+    //   console.log("Third Inside", event.body.results);
+
+    //   const body = event.body.results;
+    //   const newBody = [];
+    //   for (let obj of body) {
+    //     obj = { ...obj }
+    //     newBody.push(obj);
+    //   }
+
+    //   console.log(newBody);
+    //   return newBody;
     }
   }
 
-  private handleRequest(event: any): any {
-    const date = event.body.day;
-    const body = {
-      ...event.body, day: {
-        "__type": "Date",
-        "iso": date
-      }
-    };
+  // private handleRequest(event: any): any {
+  //   const date = event.body.day;
+  //   const body = {
+  //     ...event.body, day: {
+  //       "__type": "Date",
+  //       "iso": date
+  //     }
+  //   };
 
-    console.log(body)
+  //   console.log(body)
 
-    return body;
-  }
+  //   return body;
+  // }
 }

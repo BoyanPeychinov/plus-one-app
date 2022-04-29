@@ -46,7 +46,7 @@ export class EventCreatePageComponent implements OnInit {
     }
 
     this.eventsService.postEvent$(body).subscribe(() => {
-      this.router.navigate(['/events']);
+      this.router.navigate(['/events/all']);
     })
 
   }

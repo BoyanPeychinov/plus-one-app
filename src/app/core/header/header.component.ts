@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
     this.authService.logout$().subscribe({
       complete: () => {
         localStorage.clear();
-        this.router.navigate(['/events'])
+        this.router.navigate(['/events/all'])
       },
       error: (err) => {
         console.log(err);

@@ -11,9 +11,9 @@
             <li class="nav__item">
                 <a class="nav__itemlink" [routerLink]="['/new-event']">Създай събитие</a>
             </li>
-            <li class="nav__item">
+            <!-- <li class="nav__item">
                 <a class="nav__itemlink" href="#">Групи</a>
-            </li>
+            </li> -->
             <ng-container *ngIf="(isLoggedIn$ | async)">
                 <li class="nav__item">
                     <a class="nav__itemlink" [routerLink]="['/auth/profile']">Профил</a>

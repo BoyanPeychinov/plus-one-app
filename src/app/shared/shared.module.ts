@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { RouterModule } from '@angular/router';
 import { SharedRoutingModule } from './shared-routing.module';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 
 
 
 @NgModule({
   declarations: [
-    WelcomeComponent
+    WelcomeComponent,
+    NotFoundPageComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { SharedRoutingModule } from './shared-routing.module';
 
   ],
   exports: [
-    WelcomeComponent
+    WelcomeComponent,
+    NotFoundPageComponent
   ]
 })
 export class SharedModule { }

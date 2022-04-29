@@ -23,8 +23,6 @@ export class EventDetailsComponent implements OnInit {
   profileName: string;
   currentUser$: Observable<IUser> = this.store.select(mainState => mainState.currentUser)
   profileId: string;
-  isPlayerAdded: boolean = false;
-  show: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -38,14 +36,11 @@ export class EventDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.eventId = params['eventId'];
-      // console.log(this.eventId)
       this.eventsService.getEventById$(this.eventId).subscribe(event => {
         this.event = event;
-
-        // console.log(this.event);
       });
     });
-    this.playersService.getPlayers$().subscribe(players => {
+    this.playersService.getPlayersByEvent$(this.eventId).subscribe(players => {
       this.players = players;
     });
 
@@ -66,12 +61,13 @@ export class EventDetailsComponent implements OnInit {
     }
 
     this.playersService.postPlayer$(newPlayer).subscribe(() => {
-      this.playersService.getPlayers$().subscribe(players => {
+      this.playersService.getPlayersByEvent$(this.eventId).subscribe(players => {
         this.players = players;
         this.router.navigate([`/events/${this.eventId}`]);
       });
     });
   }
+
 
   handleGoBack(): void {
     this.location.back();

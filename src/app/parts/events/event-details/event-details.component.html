@@ -7,17 +7,15 @@
         <p class="event__rules"><span>Допълнителна информация:</span> {{event.rules}}</p>
         <div class="event__buttons">
             <button type="button" class="btn-negative btn" (click)="handleGoBack()">Обратно</button>
-            <button type="button" class="btn-success btn" (click)="handleNewPlayer()">Запиши се</button>
+            <button [disabled]="!!players && players.length >= event.maxPeople" type="button" class="btn-success btn" (click)="handleNewPlayer()">Запиши се</button>
         </div>
     </div>
     <div class="event__players">
         <ul class="players__list" *ngIf="!!players">
-            <h3 class="players__title">Футболсти</h3>
-            <ng-container *ngIf="!!show">
+            <h3 class="players__title">Футболисти</h3>
             <ng-container *ngFor="let player of players">
                 <li class="player">{{player.name}}</li>
             </ng-container>
-        </ng-container>
         </ul>
         <p *ngIf="!players">Няма записани играчи.</p>
     </div>

@@ -52,3 +52,11 @@
 .event__rules {
     line-height: 2rem;
 }
+
+.event__buttons {
+    margin-top: 2rem;
+}
+
+.btn-negative {
+    margin-right: 0.5rem;
+}
