@@ -6,7 +6,7 @@
     <nav class="header__nav">
         <ul class="nav__list">
             <li class="nav__item">
-                <a class="nav__itemlink" [routerLink]="['/events']">Събития</a>
+                <a class="nav__itemlink" [routerLink]="['/events/all']">Събития</a>
             </li>
             <li class="nav__item">
                 <a class="nav__itemlink" [routerLink]="['/new-event']">Създай събитие</a>
@@ -16,7 +16,7 @@
             </li>
             <ng-container *ngIf="(isLoggedIn$ | async)">
                 <li class="nav__item">
-                    <a class="nav__itemlink" href="#">Профил</a>
+                    <a class="nav__itemlink" [routerLink]="['/auth/profile']">Профил</a>
                 </li>
                 <li class="nav__item">
                     <a class="nav__itemlink" href="javascript:void(0);" (click)="handleLogout()">Изход</a>

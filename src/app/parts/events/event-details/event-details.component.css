@@ -1,0 +1,54 @@
+.details__container {
+    padding: 3rem 6rem;
+    letter-spacing: 2px;
+
+    position: relative;
+    z-index: 2;
+    top: 4rem;
+
+    display: flex;
+}
+
+.event__info,
+.event__players {
+    width: 50%;
+    background-color: rgba(150, 150, 150, 0.384);
+    padding: 2rem 1rem 2rem;
+    text-align: center;
+}
+
+/* .event__info p:not(.event__rules) span {
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
+
+.event__players {
+    text-align: center;
+    border-left: 1px solid #000;
+}
+
+.event__title {
+    text-align: center;
+}
+
+.event__date,
+.event__time,
+.event__venue,
+.event__rules {
+    margin-top: 1rem;
+}
+
+.event__date,
+.event__time,
+.event__venue {
+    position: relative;
+}
+
+.player {
+    margin-top: 0.3rem;
+}
+
+.event__rules {
+    line-height: 2rem;
+}

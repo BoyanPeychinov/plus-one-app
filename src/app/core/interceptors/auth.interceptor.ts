@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       tap(event => {
         if (event instanceof HttpResponse) {
-          if (event.url.endsWith('login') || event.url.endsWith('users')) {
+          if (event.url.endsWith('login')) {
             const loggingUser: IUser = event.body;
             this.authService.handleLogin(loggingUser);
           } else if (event.url.endsWith('logout')) {
@@ -30,3 +30,5 @@ export class AuthInterceptor implements HttpInterceptor {
       ));
   }
 }
+
+// event.url.endsWith('users')

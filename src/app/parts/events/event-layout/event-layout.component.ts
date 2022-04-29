@@ -8,7 +8,7 @@ import { IEvent } from 'src/app/core/interfaces/events';
 })
 export class EventLayoutComponent implements OnInit {
 
-  @Input() event?: IEvent;
+  @Input() events: IEvent[];
 
   img_url: string = '../../../../assets/';
 

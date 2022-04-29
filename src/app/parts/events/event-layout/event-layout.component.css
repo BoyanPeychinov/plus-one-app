@@ -1,36 +1,56 @@
-.event__card {
-    height: 30%;
-    width: 100%;
-    background-color: rgba(150, 150, 150, 0.384);
-
+:host {
     display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
-.event__card .event__img__wrapper {
-    aspect-ratio: 1 / 1;
+.event__card {
+    height: 35%;
+    max-width: 30%;
+    background-color: rgba(150, 150, 150, 0.384);
     border-radius: 6px;
     overflow: hidden;
 
+    /* display: flex; */
 }
 
-.event__card .event__img{
+.event__link {
+    display: flex;
+    text-decoration: none;
+}
+
+.event__img--wrapper {
+    width: 20%;
+    min-width: 10%;
+    flex-shrink: 2;
+    /* aspect-ratio: 1 / 1; */
+    
+
+}
+
+.event__img {
     object-fit: cover;
     height: 100%;
     width: 100%;
+
 }
 
-.card_info{
+.card__info {
     width: 100%;
     height: 100%;
+    padding: 2rem 3rem;
+    text-align: center;
 }
 
 .event__title {
     font-size: 1rem;
 }
 
-.event__organizer,
 .event__date,
 .event__time,
 .event__venue {
     font-size: 0.8rem;
+    margin-top: 0.4rem;
+
 }

@@ -26,6 +26,10 @@ export class EventsService {
     return this.http.get<IEvent[]>(`${apiUrl}/FootballEvent`, httpOptions)
   }
 
+  getEventById$(eventId: string): Observable<IEvent> {
+    return this.http.get<IEvent>(`${apiUrl}/FootballEvent/${eventId}`, httpOptions)
+  }
+
   postEvent$(body: IEventPost ): Observable<IEvent> {
     return this.http.post<IEvent>(`${apiUrl}/FootballEvent`, body, httpOptions)
   }

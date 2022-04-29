@@ -10,7 +10,7 @@ import { tap } from 'rxjs';
 })
 export class EventsPageComponent implements OnInit {
 
-  events?: IEvent[];
+  events: IEvent[];
 
   constructor(private eventsService: EventsService) { }
 

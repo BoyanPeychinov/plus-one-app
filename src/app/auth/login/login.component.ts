@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.authService.login$(body).pipe(
       tap(currentUser => console.log(currentUser))
     ).subscribe(() => {
-      this.router.navigate(['/events'])
+      this.router.navigate(['/events/all'])
     });
   }
 

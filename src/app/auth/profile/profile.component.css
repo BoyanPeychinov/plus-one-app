@@ -1,0 +1,66 @@
+/* Form styles */
+
+.profile-form__container {
+    padding: 3rem 6rem;
+    text-align: center;
+    letter-spacing: 2px;
+
+    position: relative;
+    z-index: 2;
+    top: 5rem;
+
+}
+
+
+.form__buttons .btn-negative {
+    margin-right: 1rem;
+}
+
+
+.form .field-error {
+    border: 2px solid #8b0000;
+    border-left: 4px solid #8b0000;
+    background-color: #ffb3b3;
+}
+
+p.error-msg {
+    color: #8b0000;
+    font-size: 0.7rem;
+}
+
+#position.field {
+    color: #333;
+}
+
+#position option {
+    color: #333;
+}
+
+/* Profile data styles */
+
+.profile__container {
+    padding: 3rem 6rem;
+    text-align: center;
+    letter-spacing: 2px;
+
+    position: relative;
+    z-index: 2;
+    top: 5rem;
+
+}
+
+.profile__data--wrapper {
+    background-color: rgba(150, 150, 150, 0.384);
+}
+
+.profile__name .name__title,
+.profile__height .height__title,
+.profile__weight .weight__title,
+.profile__position .position__title {
+    padding: 1rem 0 0.5rem;
+    text-decoration: underline;
+}
+
+.btn {
+    margin: 1rem 1rem 1rem;
+}

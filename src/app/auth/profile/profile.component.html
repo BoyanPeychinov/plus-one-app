@@ -1,1 +1,120 @@
-<p>profile works!</p>
+<ng-container *ngIf="!!(currentUser$ | async) && !!currentProfile">
+    <ng-container *ngIf="!isInEditMode">
+        <section class="profile__container">
+            <div class="profile__data--wrapper">
+                <h1 class="profile__title">Профил</h1>
+                <div class="profile__name">
+                    <h3 class="name__title">Име и фамилия</h3>
+                    <p class="name__value">{{currentProfile.name}}</p>
+                </div>
+                <div class="profile__height">
+                    <h3 class="height__title">Височина</h3>
+                    <p class="height__value">{{currentProfile.height}}</p>
+                </div>
+                <div class="profile__weight">
+                    <h3 class="weight__title">Тегло</h3>
+                    <p class="weight__value">{{currentProfile.weight}}</p>
+                </div>
+                <div class="profile__position">
+                    <h3 class="position__title">Тегло</h3>
+                    <p class="position__value">{{currentProfile.position}}</p>
+                </div>
+
+                <div class="profile__buttons">
+                    <button type="button" class="btn-negative btn" (click)="handleGoBack()">Отказ</button>
+                    <button (click)="enterEditMode()" class="btn-success btn">Редактирай</button>
+                </div>
+            </div>
+        </section>
+    </ng-container>
+</ng-container>
+
+
+<ng-container *ngIf="isInEditMode">
+    <section class="profile-form__container">
+
+        <form class="form" [formGroup]="profileFormGroup" (ngSubmit)="handleEdit()">
+            <h1 class="form__title">Профил</h1>
+
+            <div class="form__name">
+                <label for="name">Име и фамилия</label>
+                <input type="text" formControlName="name" name="name" id="name" class="field"
+                    [class.field-error]="profileFormGroup.controls['name'].touched && profileFormGroup.controls['name'].invalid">
+            </div>
+
+            <ng-container
+                *ngIf="profileFormGroup.controls['name'].touched && profileFormGroup.controls['name'].invalid">
+                <p *ngIf="profileFormGroup.controls['name'].errors?.['required']" class="error-msg">
+                    Въведи име и фамилия!
+                </p>
+                <p *ngIf="profileFormGroup.controls['username'].errors?.['minlength'] || profileFormGroup.controls['username'].errors?.['maxlength']"
+                    class="error-msg">
+                    Въведи реално име и фамилия!
+                </p>
+            </ng-container>
+
+            <div class="form__height">
+                <label for="height">Височина</label>
+                <input type="number" formControlName="height" name="height" id="height" class="field"
+                    [class.field-error]="profileFormGroup.controls['height'].touched && profileFormGroup.controls['height'].invalid">
+            </div>
+
+            <ng-container
+                *ngIf="profileFormGroup.controls['height'].touched && profileFormGroup.controls['height'].invalid">
+
+                <p *ngIf="profileFormGroup.controls['height'].errors?.['required']" class="error-msg">
+                    Въведи височина!
+                </p>
+                <p *ngIf="profileFormGroup.controls['height'].errors?.['minlength'] || profileFormGroup.controls['height'].errors?.['maxlength']"
+                    class="error-msg">
+                    Височина в сантиметри!
+                </p>
+            </ng-container>
+
+            <div class="form__weight">
+                <label for="weight">Тегло</label>
+                <input type="number" formControlName="weight" name="weight" id="weight" class="field"
+                    [class.field-error]="profileFormGroup.controls['weight'].touched && profileFormGroup.controls['weight'].invalid">
+            </div>
+
+            <ng-container
+                *ngIf="profileFormGroup.controls['weight'].touched && profileFormGroup.controls['weight'].invalid">
+
+                <p *ngIf="profileFormGroup.controls['weight'].errors?.['required']" class="error-msg">
+                    Въведи тегло!
+                </p>
+                <p *ngIf="profileFormGroup.controls['weight'].errors?.['minlength'] || profileFormGroup.controls['weight'].errors?.['maxlength']"
+                    class="error-msg">
+                    Въведи реални килограми!
+                </p>
+            </ng-container>
+
+            <div class="form__position">
+                <label for="position">Позиция на терена</label>
+                <select formControlName="position" name="position" class="field" id="position"
+                    [class.field-error]="profileFormGroup.controls['weight'].touched && profileFormGroup.controls['weight'].invalid">
+                    <option value="Вратар">Вратар</option>
+                    <option value="Ляв защитник">Ляв защитник</option>
+                    <option value="Централен защитник">Централен защитник</option>
+                    <option value="Десен защитник">Десен защитник</option>
+                    <option value="Дефанзивен халф">Дефанзивен халф</option>
+                    <option value="Атакуващ халф">Атакуващ халф</option>
+                    <option value="Ляво крило">Ляво крило</option>
+                    <option value="Дясно крило">Дясно крило</option>
+                    <option value="Нападател">Нападател</option>
+                </select>
+            </div>
+
+
+            <div class="form__buttons">
+                <button type="button" class="btn-negative btn" (click)="handleGoBack()">Отказ</button>
+                <button [disabled]="!profileFormGroup.valid" type="submit" class="btn-success btn">Запиши</button>
+            </div>
+        </form>
+    </section>
+</ng-container>
+
+
+<section class="profile__container" *ngIf="!(currentUser$ | async) || !currentProfile">
+    Зареждане...
+</section>

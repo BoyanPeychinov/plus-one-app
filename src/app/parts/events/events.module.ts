@@ -6,6 +6,7 @@ import { EventsRoutingModule } from './events-routing.module';
 import { EventCreatePageComponent } from './event-create-page/event-create-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from 'src/app/core/core.module';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 
 
@@ -14,6 +15,7 @@ import { CoreModule } from 'src/app/core/core.module';
     EventsPageComponent,
     EventLayoutComponent,
     EventCreatePageComponent,
+    EventDetailsComponent,
   ],
   imports: [
     CommonModule,

@@ -7,16 +7,6 @@ import { apiHeaders } from 'src/assets/api-headers';
 import { environment } from 'src/environments/environment';
 import { IUser } from '../interfaces/user';
 
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     "X-Parse-Application-Id": apiHeaders.apiId,
-//     "X-Parse-REST-API-Key": apiHeaders.apiKey,
-//     "X-Parse-Revocable-Session": "1",
-//     "content-type": "application/json",
-//     // "X-Parse-Session-Token": Store.currentUser
-//   })
-// }
-
 
 @Injectable({
   providedIn: 'root'
@@ -54,18 +44,17 @@ export class AuthService {
       }))
   }
 
-  // handleLogin(newUser: IUser) {
-  //   this._currentUser.next(newUser);
-  // }
   handleLogin(newUser: IUser) {
     this.store.dispatch(login({user: newUser}));
+
   }
 
-  // handleLogout() {
-  //   this._currentUser.next(undefined);
-  // }
   handleLogout() {
     this.store.dispatch(logout());
+  }
+
+  editUser$(body, userId): Observable<{}> {
+    return this.http.put(`${environment.usersApiUrl}/${userId}`, body)
   }
 
 }

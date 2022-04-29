@@ -18,7 +18,6 @@ export class ClassesInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          console.log(event.body.results);
           event = event.clone({ body: this.handleResponse(event) })
         }
 
@@ -28,8 +27,8 @@ export class ClassesInterceptor implements HttpInterceptor {
   }
 
   private handleResponse(event: any): any {
-    if (event.body.results) {
-      const body = event.body.results
+    if (event.body.results && event.body.results.hasOwnProperty('day')) {
+      const body = event.body.results;
       const newBody = [];
       for (let obj of body) {
         const date = obj.day.iso;
@@ -37,8 +36,22 @@ export class ClassesInterceptor implements HttpInterceptor {
         newBody.push(obj);
       }
       return newBody;
-    }
 
+    } else if (event.body.hasOwnProperty('day')) {
+      const body = event.body;
+      const date = body.day.iso;
+      const newBody = { ...body, day: date };
+
+      return newBody;
+    } else if (event.body.results) {
+      const body = event.body.results;
+      const newBody = [];
+      for (let obj of body) {
+        obj = { ...obj }
+        newBody.push(obj);
+      }
+      return newBody;
+    }
   }
 
   private handleRequest(event: any): any {

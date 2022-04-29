@@ -13,13 +13,13 @@
 .events-general .events-general__title {
     text-transform: uppercase;
     letter-spacing: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-.events-general .events-container {
-    /* width: 80%; */
+/* app-event-layout {
     display: flex;
-    flex-direction: row;
     gap: 2rem;
-    flex-wrap: no-wrap;
+    flex-wrap: wrap;
+    flex-direction: row;
+} */
 
-}
